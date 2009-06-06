@@ -2229,11 +2229,6 @@ main (int argc, char* argv[]) {
     uzbl.state.selected_url = NULL;
     uzbl.state.searchtx = NULL;
 
-    GOptionContext* context = g_option_context_new ("- some stuff here maybe someday");
-    g_option_context_add_main_entries (context, entries, NULL);
-    g_option_context_add_group (context, gtk_get_option_group (TRUE));
-    g_option_context_parse (context, &argc, &argv, NULL);
-    g_option_context_free(context);
     /* initialize hash table */
     uzbl.bindings = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, free_action);
 
@@ -2297,6 +2292,12 @@ main (int argc, char* argv[]) {
     gtk_widget_set_scroll_adjustments ((GtkWidget*) uzbl.gui.web_view, uzbl.gui.bar_h, uzbl.gui.bar_v);
 
     settings_init ();
+
+    GOptionContext* context = g_option_context_new ("- some stuff here maybe someday");
+    g_option_context_add_main_entries (context, entries, NULL);
+    g_option_context_add_group (context, gtk_get_option_group (TRUE));
+    g_option_context_parse (context, &argc, &argv, NULL);
+    g_option_context_free(context);
 
     if (!uzbl.behave.show_status)
         gtk_widget_hide(uzbl.gui.mainbar);
