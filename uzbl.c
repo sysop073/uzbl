@@ -972,7 +972,7 @@ sharg_append(GArray *a, const gchar *str) {
 static gboolean
 run_command (const gchar *command, const guint npre, const gchar **args,
              const gboolean sync, char **stdout) {
-   //command <uzbl conf> <uzbl pid> <uzbl win id> <uzbl fifo file> <uzbl socket file> [args]
+   //command <uzbl conf> <uzbl pid> <uzbl win id> <uzbl fifo file> <uzbl socket file> <uri> <title> [args]
     GError *err = NULL;
     
     GArray *a = g_array_new (TRUE, FALSE, sizeof(gchar*));
